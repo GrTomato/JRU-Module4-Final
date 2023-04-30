@@ -2,6 +2,8 @@ package org.javarush.domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.Type;
@@ -11,7 +13,8 @@ import java.math.BigDecimal;
 import static org.hibernate.annotations.CascadeType.DELETE;
 import static org.hibernate.annotations.CascadeType.SAVE_UPDATE;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(
         schema = "world",

@@ -12,5 +12,11 @@ services:
       - ./dump-hibernate-final.sql:/docker-entrypoint-initdb.d/dump-hibernate-final.sql
       - mysql-volume:/var/lib/mysql
 
+  redis-stack:
+    image: redis/redis-stack:latest
+    ports:
+      - '6379:6379'
+      - '8001:8001'
+
 volumes:
   mysql-volume:

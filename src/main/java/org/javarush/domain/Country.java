@@ -1,13 +1,15 @@
 package org.javarush.domain;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.math.BigDecimal;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(
         schema = "world",
@@ -26,7 +28,7 @@ public class Country {
 
     @Column(name = "code_2", nullable = false, length = 2)
     @ColumnDefault(value = "")
-    private String code2;
+    private String alternativeCode;
 
     @Column(name = "name", nullable = false, length = 52)
     @ColumnDefault(value = "")
@@ -72,11 +74,11 @@ public class Country {
     @Column(name = "head_of_state", length = 60)
     private String headOfState;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "capital")
     private City city;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "country_id")
     private Set<CountryLanguage> languages;
 
